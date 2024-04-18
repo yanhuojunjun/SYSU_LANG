@@ -1,5 +1,5 @@
 # SYsU-lang **(2.0)**
-
+![logo](docs/logo/SYsU-lang-LOGO.png)
 中山大学（**S**un **Y**at-**s**en **U**niversity）[编译原理](https://arcsysu.github.io/teach/dcs290/s2024.html)课程实验 **2.0** 版。
 
 根据此前的教学反馈，我们对原先实验框架进行了彻底的重构，重构后的版本：
@@ -67,4 +67,4 @@ cd ../llvm && bash install.sh
 
 现在，你已经准备好了，请按照每个任务的具体要求，开始你的编译器实验之旅吧！
 
-你可以在这里找到更多的参考文档：[https://zwshan.github.io/SYsU-lang-doc](https://zwshan.github.io/SYsU-lang-doc)。
+你可以在这里找到更多的参考文档：[arcsysu.github.io/SYsU-lang2/](https://arcsysu.github.io/SYsU-lang2/)。
