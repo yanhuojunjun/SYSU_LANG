@@ -10,7 +10,7 @@ using ast = SYsUParser;
 class Ast2Asg
 {
 public:
-  Obj::Mgr& mMgr;
+  Obj::Mgr& mMgr; //创建和管理AST节点对象
 
   Ast2Asg(Obj::Mgr& mgr)
     : mMgr(mgr)
@@ -42,7 +42,17 @@ public:
 
   Expr* operator()(ast::AssignmentExpressionContext* ctx);
 
+  Expr* operator()(ast::ParenExpressionContext* ctx);
+
+  Expr* operator()(ast::MultiplicativeExpressionContext* ctx);
+
   Expr* operator()(ast::AdditiveExpressionContext* ctx);
+
+  Expr* operator()(ast::Condition_lowContext* ctx);
+
+  Expr* operator()(ast::Condition_midContext* ctx);
+
+  Expr* operator()(ast::Condition_highContext* ctx);
 
   Expr* operator()(ast::UnaryExpressionContext* ctx);
 
@@ -57,6 +67,14 @@ public:
   //============================================================================
 
   Stmt* operator()(ast::StatementContext* ctx);
+
+  IfStmt* operator()(ast::IfStatementContext* ctx);
+
+  WhileStmt* operator()(ast::WhileStatementContext* ctx);
+
+  BreakStmt* operator()(ast::BreakStatementContext* ctx);
+
+  ContinueStmt* operator()(ast::ContinueStatementContext* ctx);
 
   CompoundStmt* operator()(ast::CompoundStatementContext* ctx);
 

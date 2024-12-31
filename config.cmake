@@ -4,12 +4,13 @@ set(STUDENT_ID "21307140")
 set(STUDENT_NAME "李明俊")
 
 # 实验一的完成方式："flex"或"antlr"
-set(TASK1_WITH "flex")
+set(TASK1_WITH "antlr")
 # 实验一的日志级别，级别从低到高为0-3
 set(TASK1_LOG_LEVEL 3)
 
+
 # 实验二的完成方式："bison"或"antlr"
-set(TASK2_WITH "bison")
+set(TASK2_WITH "antlr")
 # 是否在实验二复活，ON或OFF
 set(TASK2_REVIVE ON)
 # 实验二的日志级别，级别从低到高为0-3

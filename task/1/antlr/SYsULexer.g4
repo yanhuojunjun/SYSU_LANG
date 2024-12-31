@@ -1,7 +1,9 @@
 lexer grammar SYsULexer;
 
 Int : 'int';
+Const : 'const';
 Return : 'return';
+Void : 'void';
 
 LeftParen : '(';
 RightParen : ')';
@@ -11,13 +13,33 @@ LeftBrace : '{';
 RightBrace : '}';
 
 Plus : '+';
+Minus: '-';
+Star: '*';
+Percent: '%';
+Slash: '/';
 
 Semi : ';';
 Comma : ',';
 
+Equalequal: '==';
 Equal : '=';
+Greater : '>';
+Less : '<';
+Lessequal : '<=';
+Greaterequal : '>=';
+Pipepipe : '||';
+Ampamp : '&&';
+Exclaimequal : '!=';
+Exclaim : '!';
 
-Identifier
+If : 'if';
+Else : 'else';
+While : 'while';
+Break : 'break';
+Continue : 'continue';
+
+//变量----
+Identifier 
     :   IdentifierNondigit
         (   IdentifierNondigit
         |   Digit
@@ -39,7 +61,8 @@ Digit
     :   [0-9]
     ;
 
-Constant
+//数字----
+Constant   
     :   IntegerConstant
     ;
 
@@ -47,6 +70,7 @@ fragment
 IntegerConstant
     :   DecimalConstant
     |   OctalConstant
+    |   HexConstant
     ;
 
 fragment
@@ -59,6 +83,10 @@ OctalConstant
     :   '0' OctalDigit*
     ;
 
+fragment
+HexConstant
+    :   '0x' HexDigit*
+    ;
 
 fragment
 NonzeroDigit
@@ -70,24 +98,24 @@ OctalDigit
     :   [0-7]
     ;
 
+fragment
+HexDigit
+    :   [0-9a-f]
+    ;
 
 // 预处理信息处理，可以从预处理信息中获得文件名以及行号
 // 预处理信息前面的数组即行号
-LineAfterPreprocessing
+LineAfterPreprocessing  //
     :   '#' Whitespace* ~[\r\n]*
-        -> skip
     ;
 
-Whitespace
+Whitespace   //空格
     :   [ \t]+
-        -> skip
     ;
 
-// 换行符号，可以利用这个信息来更新行号
-Newline
-    :   (   '\r' '\n'?
+Newline     //换行符号，可以利用这个信息来更新行号
+    :   (   '\r' '\n'?  // 回车符后可能跟随的换行符
         |   '\n'
         )
-        -> skip
     ;
 

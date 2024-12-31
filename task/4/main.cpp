@@ -10,6 +10,11 @@
 #include "Mem2Reg.hpp"
 #include "StaticCallCounter.hpp"
 #include "StaticCallCounterPrinter.hpp"
+#include "ConstantPropagation.hpp"
+#include "StrengthReduction.hpp"
+#include "AlgebraicIdentities.hpp"
+#include "CommonSubexpression.hpp"
+#include "InstructionCombining.hpp"
 
 void
 opt(llvm::Module& mod)
@@ -31,13 +36,19 @@ opt(llvm::Module& mod)
   pb.registerLoopAnalyses(lam);
   pb.crossRegisterProxies(lam, fam, cgam, mam);
 
-  // 添加分析pass到管理器中
+  // 添加分析pass到管理器中-------Analysis Pass
   mam.registerPass([]() { return StaticCallCounter(); });
 
-  // 添加优化pass到管理器中
+  // 添加优化pass到管理器中-------Transform Pass
   mpm.addPass(StaticCallCounterPrinter(llvm::errs()));
   mpm.addPass(Mem2Reg());
+  mpm.addPass(ConstantPropagation(llvm::errs()));
   mpm.addPass(ConstantFolding(llvm::errs()));
+  mpm.addPass(AlgebraicIdentities(llvm::errs()));
+  mpm.addPass(CommonSubexpression(llvm::errs()));
+  mpm.addPass(InstructionCombining(llvm::errs()));
+  mpm.addPass(StrengthReduction(llvm::errs())); 
+  
   // 运行优化pass
   mpm.run(mod, mam);
 }

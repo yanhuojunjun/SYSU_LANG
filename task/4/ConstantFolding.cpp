@@ -15,15 +15,13 @@ ConstantFolding::run(Module& mod, ModuleAnalysisManager& mam)
       // 遍历每个基本块的指令
       for (auto& inst : bb) {
         // 判断当前指令是否是二元运算指令
-        if (auto binOp = dyn_cast<BinaryOperator>(&inst)) {
-          // 获取二元运算指令的左右操作数，并尝试转换为常整数
+        if (auto binOp = dyn_cast<BinaryOperator>(&inst)) { 
           Value* lhs = binOp->getOperand(0);
           Value* rhs = binOp->getOperand(1);
-          auto constLhs = dyn_cast<ConstantInt>(lhs);
-          auto constRhs = dyn_cast<ConstantInt>(rhs);
+          auto constLhs = dyn_cast<ConstantInt>(lhs); 
+          auto constRhs = dyn_cast<ConstantInt>(rhs);  
           switch (binOp->getOpcode()) {
-            case Instruction::Add: {
-              // 若左右操作数均为整数常量，则进行常量折叠与use替换
+            case Instruction::Add: {  //加-------
               if (constLhs && constRhs) {
                 binOp->replaceAllUsesWith(ConstantInt::getSigned(
                   binOp->getType(),
@@ -33,7 +31,7 @@ ConstantFolding::run(Module& mod, ModuleAnalysisManager& mam)
               }
               break;
             }
-            case Instruction::Sub: {
+            case Instruction::Sub: {  //减-------
               if (constLhs && constRhs) {
                 binOp->replaceAllUsesWith(ConstantInt::getSigned(
                   binOp->getType(),
@@ -43,7 +41,7 @@ ConstantFolding::run(Module& mod, ModuleAnalysisManager& mam)
               }
               break;
             }
-            case Instruction::Mul: {
+            case Instruction::Mul: { //乘-------
               if (constLhs && constRhs) {
                 binOp->replaceAllUsesWith(ConstantInt::getSigned(
                   binOp->getType(),
@@ -54,7 +52,7 @@ ConstantFolding::run(Module& mod, ModuleAnalysisManager& mam)
               break;
             }
             case Instruction::UDiv:
-            case Instruction::SDiv: {
+            case Instruction::SDiv: { //除------
               if (constLhs && constRhs) {
                 binOp->replaceAllUsesWith(ConstantInt::getSigned(
                   binOp->getType(),
