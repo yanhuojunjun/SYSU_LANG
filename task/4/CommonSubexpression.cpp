@@ -64,7 +64,8 @@ CommonSubexpression::run(Module& mod, ModuleAnalysisManager& mam)
       }   
     }
   }
-
+ 
+  //公共子表达式删除----------
   for (int i = 1; i <= 110;i++){
     for (auto& func : mod) {
       for (auto& bb : func) {

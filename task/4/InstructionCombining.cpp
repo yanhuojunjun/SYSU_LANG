@@ -9,6 +9,7 @@ InstructionCombining::run(Module& mod, ModuleAnalysisManager& mam)
 {
   int constFoldTimes = 0;
 
+  //预处理------------
   bool startAdd = 0;
   Instruction* preAdd;            // 上一个加法指令
   Value* firstElement;
@@ -35,6 +36,7 @@ InstructionCombining::run(Module& mod, ModuleAnalysisManager& mam)
   
   int lastElement = list.back(); 
 
+  //指令合并-----------
   int count = 0;
   bool breakpoint = 0;
   if (list.size() > 10) {
