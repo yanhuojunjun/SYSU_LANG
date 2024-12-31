@@ -2,7 +2,8 @@
   <img width="512" src="docs/logo/SYsU-lang-LOGO.png">
 </p>
 
-# SYsU-lang **(Compiler Components in the “SYSU_ArchLang” Project)**
+# SYsU-lang 
+**(Compiler Components in the “SYSU_ArchLang” Project)**
 
 ## 1. Introduction
 
