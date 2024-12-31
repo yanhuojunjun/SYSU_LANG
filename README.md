@@ -7,7 +7,7 @@
 
 ## 1. Introduction
 
-In this project, we designed and built a front-end and middle-end compiler capable of translating a C-like language into optimized LLVM Intermediate Representation (LLVM IR). The compiler encompasses several key components, including lexical analysis, syntax analysis, semantic analysis, intermediate code generation, and intermediate code optimization. By implementing these stages, we ensured efficient parsing and transformation of source code, resulting in highly optimized machine-level instructions.
+In this project, we designed and built a front-end and middle-end compiler capable of translating a C-like language into optimized LLVM Intermediate Representation (LLVM IR). The compiler encompasses several key components, including lexical analysis, syntax analysis, semantic analysis, intermediate code generation, and intermediate code optimization. 
 
 ## 2. Project Description
 
@@ -15,7 +15,7 @@ The project is primarily composed of four parts:
 
 #### (1) Lexical Analysis
 
-Write regular expressions and use ANTLR to perform lexical analysis, converting the input code into tokens. This part achieves the same results as Clang‘s lexical analysis. The core code logic is implemented in `task/1/antlr`.
+Write regular expressions and use ANTLR to perform lexical analysis, converting the input code into tokens. This part achieves the same results as Clang's lexical analysis. The core code logic is implemented in `task/1/antlr`.
 
 #### (2) Syntax Analysis and Semantic Analysis
 
