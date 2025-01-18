@@ -3,7 +3,7 @@
 </p>
 
 # SYsU-lang 
-**(Compiler Components in the “SYSU_ArchLang” Project)**
+Compiler Components in the “SYSU_ArchLang” Project, the CPU Components could be found [here](https://github.com/yanhuojunjun/SYSU_Arch).
 
 ## 1. Introduction
 
